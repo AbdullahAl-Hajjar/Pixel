@@ -7,24 +7,6 @@ import { createStackNavigator, Header } from 'react-navigation-stack';
 import firebase from 'firebase';
 
  class App extends React.Component {
-
-  componentWillMount(){
-
-    var firebaseConfig = {
-      apiKey: "AIzaSyDGFnqFvXWXvR8Sfu3JqrsKBT9Hgb-HOcQ",
-      authDomain: "sparkpath-6b02e.firebaseapp.com",
-      databaseURL: "https://sparkpath-6b02e.firebaseio.com",
-      projectId: "sparkpath-6b02e",
-      storageBucket: "",
-      messagingSenderId: "10959119150",
-      appId: "1:10959119150:web:38eb97d4c7bb9c932850bf",
-      measurementId: "G-VCSW7Z226R"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
-  
-  }
   
   render() {
     return (

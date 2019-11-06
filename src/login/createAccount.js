@@ -3,7 +3,6 @@ import styles from "./style.js";
 import {Button, Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, AsyncStorage} from 'react-native';
 import firebase from 'firebase';
 import Main from '../main/main.js';
-import CreateAccount from './createAccount.js';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, Header } from 'react-navigation-stack';
 
@@ -19,7 +18,10 @@ class LoginScreen extends Component {
     {
       username:'',
       password:'',
-      jsonArray: [],
+      passwordMatch:'',
+      email:'',
+      favoriteChallenge:'',
+      favoriteCompany:'',
     }
   }
 
@@ -36,7 +38,9 @@ class LoginScreen extends Component {
       measurementId: "G-VCSW7Z226R"
     };
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
     //firebase.analytics();
     firebase.database().ref('accounts').once('value').then(function(snapshot) {
       jsonArray = snapshot.val();
@@ -46,8 +50,6 @@ class LoginScreen extends Component {
   }
 
 
-
-
   render() {
     return (
       
@@ -55,26 +57,30 @@ class LoginScreen extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.loginScreenContainer}>
           <View style={styles.loginFormView}>
-          <Text style={styles.logoText}>Spark Your Path</Text>
-            <TextInput placeholder="Username" value={this.state.username}
+          <Text style={styles.logoText}>Create an Account</Text>
+          <Text style={styles.createFormText}>Username</Text>
+            <TextInput placeholder="Type your new username" value={this.state.username}
             onChangeText={username => this.setState({username})}
             placeholderColor="#c4c3cb" style={styles.loginFormTextInput} />
-            <TextInput placeholder="Password" 
+            <Text style={styles.createFormText}>Password</Text>
+            <TextInput placeholder="●●●●●●●●"
             value={this.state.password}
             onChangeText={password => this.setState({password})}
             placeholderColor="#c4c3cb" style={styles.loginFormTextInput} secureTextEntry={true}/>
+            <Text style={styles.createFormText}>Re-type Password</Text>
+            <TextInput placeholder="●●●●●●●●"
+            value={this.state.passwordMatch}
+            onChangeText={passwordMatch => this.setState({passwordMatch})}
+            placeholderColor="#c4c3cb" style={styles.loginFormTextInput} secureTextEntry={true}/>
+            <Text style={styles.createFormText}>E-mail</Text>
+            <TextInput  placeholder="email@example.com"value={this.state.email}
+            onChangeText={email => this.setState({email})}
+            placeholderColor="#c4c3cb" style={styles.loginFormTextInput} />
             <Separator />
             <Button
               buttonStyle={styles.loginButton}
-              onPress={() => this.onLoginPress()}
-              title="Login"
-              color="#793FA0"
-            />
-            <Separator />
-            <Button
-              buttonStyle={styles.createAccount}
               onPress={() => this.createAccount()}
-              title="Create an Account"
+              title="Sign Up"
               color="#793FA0"
             />
           </View>
@@ -92,29 +98,32 @@ class LoginScreen extends Component {
 
   
 
-  onLoginPress() {
-    for (i in jsonArray.clients) {
-      if(jsonArray.clients[i].username  === this.state.username && jsonArray.clients[i].password === this.state.password){
-        this.props.navigation.navigate('Home')
-        break
-      }
-      else{
-        alert('Invalid Username or Password');
-        break
-      }
-    }
-  }
-  
+  createAccount() {
+    if (this.state.password !== "" && this.state.username !== "" &&
+        this.state.passwordMatch !== "" && this.state.email !== "") {
+        if (this.state.password !== this.state.passwordMatch) {
+            alert("Passwords don't match");
+        } else {
+            firebase.database().ref('accounts/clients').push({
+                username: this.state.username,
+                password: this.state.password,
+                email: this.state.email,
+                favoriteChallenge: this.state.favoriteChallenge,
+                favoriteCompany: this.state.favoriteCompany
+            });
 
-  async createAccount() {
-    this.props.navigation.navigate('Create')
-  }
+            this.props.navigation.navigate('Home')
+        }
+    } else {
+        alert("Fill in the blanks");
+    }
+}
+
 }
 
 const RootStack = createStackNavigator({
   Login: { screen: LoginScreen },
   Main: { screen: Main },
-  Create: {screen: CreateAccount},
 },{headerMode: 'none',
 });
 

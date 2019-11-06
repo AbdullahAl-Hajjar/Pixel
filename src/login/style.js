@@ -32,8 +32,8 @@ loginFormTextInput: {
   fontSize: 14,
   borderRadius: 5,
   borderWidth: 1,
-  borderColor: '#eaeaea',
-  backgroundColor: '#fafafa',
+  borderColor: '#8c3fb5',
+  backgroundColor: '#f0f0f0',
   paddingLeft: 10,
   marginLeft: 15,
   marginRight: 15,
@@ -41,11 +41,21 @@ loginFormTextInput: {
   marginBottom: 5,
 
 },
+createFormText: {
+  height: 17,
+  fontSize: 14,
+  paddingLeft: 10,
+  marginLeft: 10,
+  marginRight: 15,
+  marginTop: 1,
+  marginBottom: 1,
+
+},
 loginButton: {
   borderRadius: 2,
   height: 45,
 },
-guestLoginButton: {
+createAccount: {
   height: 45,
   backgroundColor: 'transparent',
 },
