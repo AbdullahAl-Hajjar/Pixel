@@ -10,7 +10,7 @@ function Separator() {
     return <View style={styles.separator} />;
   }
   
-class LoginScreen extends Component {
+class CreateAccount extends Component {
 
   constructor(props){
     super(props);
@@ -122,7 +122,7 @@ class LoginScreen extends Component {
 }
 
 const RootStack = createStackNavigator({
-  Login: { screen: LoginScreen },
+  Login: { screen: CreateAccount },
   Main: { screen: Main },
 },{headerMode: 'none',
 });

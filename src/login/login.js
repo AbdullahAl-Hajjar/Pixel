@@ -96,13 +96,11 @@ class LoginScreen extends Component {
     for (i in jsonArray.clients) {
       if(jsonArray.clients[i].username  === this.state.username && jsonArray.clients[i].password === this.state.password){
         this.props.navigation.navigate('Home')
-        break
-      }
-      else{
-        alert('Invalid Username or Password');
-        break
+        return
       }
     }
+    alert('Invalid Username or Password');
+    return
   }
   
 
