@@ -1,16 +1,27 @@
 
-
+// Sorting cards
+// Nasser Al Kayal
+// This class will sort the cards as like or unlike
+// Nov 25, 2019
 import React from 'react';
 
-import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder } from 'react-native';
-
-
+import { StyleSheet, Text, View, Dimensions, Image, Animated, PanResponder ,Button} from 'react-native';
+import unit2s from './unit111';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator, Header } from 'react-navigation-stack';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 
 const SCREEN_WIDTH = Dimensions.get('window').width
 
 import Icon from 'react-native-vector-icons/Ionicons'
+
+
+
+
+var selectedImage = new Array();
+ 
+
 
 const Challenges = [
 
@@ -54,7 +65,7 @@ const Challenges = [
 
 
 
-export default class unit1 extends React.Component {
+ class unit1 extends React.Component {
 
 
 
@@ -170,6 +181,9 @@ export default class unit1 extends React.Component {
 
         if (gestureState.dx > 120) {
 
+  
+         
+          selectedImage.push(Challenges[this.state.currentIndex])
           Animated.spring(this.position, {
 
             toValue: { x: SCREEN_WIDTH + 100, y: gestureState.dy }
@@ -185,9 +199,25 @@ export default class unit1 extends React.Component {
           })
 
         }
+        else if (gestureState.dy < -120) {
+          
+          Animated.spring(this.position, {
 
+            toValue: { x: -SCREEN_WIDTH - 100, y: gestureState.dy }
+
+          }).start(() => {
+
+            this.setState({ currentIndex: this.state.currentIndex + 1 }, () => {
+
+              this.position.setValue({ x: 0, y: 0 })
+
+            })
+
+          })
+
+        }
         else if (gestureState.dx < -120) {
-
+          
           Animated.spring(this.position, {
 
             toValue: { x: -SCREEN_WIDTH - 100, y: gestureState.dy }
@@ -232,6 +262,12 @@ export default class unit1 extends React.Component {
 
 
 
+      if(this.state.currentIndex == Challenges.length)
+      {
+
+        this.props.navigation.navigate('unit2',{ data:selectedImage })
+      }
+
 
 
       if (i < this.state.currentIndex) {
@@ -239,6 +275,9 @@ export default class unit1 extends React.Component {
         return null
 
       }
+
+      
+
 
       else if (i == this.state.currentIndex) {
 
@@ -338,7 +377,13 @@ export default class unit1 extends React.Component {
 
       }
 
+      
+
+
     }).reverse()
+
+  
+   
 
   }
 
@@ -350,8 +395,8 @@ export default class unit1 extends React.Component {
 
       <View style={{ flex: 1 }}>
 
-        <View style={{ height: 60 }}>
-
+        <View style={{ height: 10}}>
+       
 
 
         </View>
@@ -359,16 +404,9 @@ export default class unit1 extends React.Component {
         <View style={{ flex: 1 }}>
 
           {this.renderChallenges()}
+          
 
         </View>
-
-        <View style={{ height: 60 }}>
-
-
-
-        </View>
-
-
 
 
 
@@ -380,6 +418,7 @@ export default class unit1 extends React.Component {
 
   }
 
+
 }
 
 
@@ -387,7 +426,7 @@ export default class unit1 extends React.Component {
 const styles = StyleSheet.create({
 
   container: {
-
+    position: 'absolute',
     flex: 1,
 
     backgroundColor: '#fff',
@@ -399,3 +438,12 @@ const styles = StyleSheet.create({
   },
 
 });
+
+
+const Units = createStackNavigator({
+  unit1: {screen:unit1},
+  unit2: {screen: unit2s},
+},{headerMode: 'none',
+});
+
+export default createAppContainer(Units);

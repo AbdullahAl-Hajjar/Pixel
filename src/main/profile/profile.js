@@ -12,8 +12,6 @@ import styles from "./style.js";
 
 class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
-    const { params } = navigation.state;
-
     return {
       headerTitle: (
         <Image
@@ -34,6 +32,7 @@ class ProfileScreen extends React.Component {
   };
 
   render() {
+    const { user } = this.props.navigation.state.params
     return (
       <View style={styles.container}>
         <View style={styles.firstrow}>
@@ -45,8 +44,8 @@ class ProfileScreen extends React.Component {
               style={styles.profileImage}
               source={require("../../../assets/profile_image.jpeg")}
             />
-            <Text>Jane Doe</Text>
-            <Text>JaneDoe@gmail.com</Text>
+            <Text>{user.username}</Text>
+            <Text>{user.email}</Text>
             <TouchableHighlight style={styles.changePassword}>
               <Text style={styles.changePasswordText}>Change Password</Text>
             </TouchableHighlight>

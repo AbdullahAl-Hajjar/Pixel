@@ -104,15 +104,16 @@ class CreateAccount extends Component {
         if (this.state.password !== this.state.passwordMatch) {
             alert("Passwords don't match");
         } else {
-            firebase.database().ref('accounts/clients').push({
-                username: this.state.username,
+            user = {
+              username: this.state.username,
                 password: this.state.password,
                 email: this.state.email,
                 favoriteChallenge: this.state.favoriteChallenge,
                 favoriteCompany: this.state.favoriteCompany
-            });
+            }
+            firebase.database().ref('accounts/clients').push(user);
 
-            this.props.navigation.navigate('Home')
+            this.props.navigation.navigate('Main', {user: user})
         }
     } else {
         alert("Fill in the blanks");
@@ -129,4 +130,3 @@ const RootStack = createStackNavigator({
 
 
 export default createAppContainer(RootStack);
-

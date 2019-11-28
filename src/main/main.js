@@ -1,11 +1,14 @@
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createStackNavigator, Header } from 'react-navigation-stack';
 import Icon from "react-native-vector-icons/FontAwesome5";
 import MIcon from "react-native-vector-icons/MaterialIcons";
 import HomeScreen from "./home/home";
 import CourseScreen from "./course/course";
 import ProfileScreen from "./profile/profile";
 import SearchScreen from "./search/search";
+
+// const ProfileStack = createStackNavigator({ ProfileScreen });
 
 const MainTabs = createBottomTabNavigator(
   {
@@ -37,6 +40,7 @@ const MainTabs = createBottomTabNavigator(
       }
     },
     Profile: {
+      // screen: ProfileStack,
       screen: ProfileScreen,
       navigationOptions: {
         title: "Profile",

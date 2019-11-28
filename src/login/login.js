@@ -95,7 +95,7 @@ class LoginScreen extends Component {
   onLoginPress() {
     for (i in jsonArray.clients) {
       if(jsonArray.clients[i].username  === this.state.username && jsonArray.clients[i].password === this.state.password){
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate('Main', {user: jsonArray.clients[i]})
         return
       }
     }
@@ -118,4 +118,3 @@ const RootStack = createStackNavigator({
 
 
 export default createAppContainer(RootStack);
-
