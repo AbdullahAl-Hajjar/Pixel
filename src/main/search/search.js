@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons'
 //import * as Animatable from 'react-native-animatable'
 // import styles from "./style.js";
 
+
 class SearchScreen extends React.Component {
     render() {
       return (

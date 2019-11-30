@@ -6,6 +6,7 @@ import Main from '../main/main.js';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, Header } from 'react-navigation-stack';
 
+
 function Separator() {
     return <View style={styles.separator} />;
   }

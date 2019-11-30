@@ -10,6 +10,8 @@ import unit2s from './unit111';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, Header } from 'react-navigation-stack';
 
+
+
 const SCREEN_HEIGHT = Dimensions.get('window').height
 
 const SCREEN_WIDTH = Dimensions.get('window').width
@@ -260,12 +262,12 @@ const Challenges = [
 
     return Challenges.map((item, i) => {
 
-
+      console.log(item.uri)
 
       if(this.state.currentIndex == Challenges.length)
       {
 
-        this.props.navigation.navigate('unit2',{ data:selectedImage })
+        this.props.navigation.navigate('unit111',{ data:selectedImage })
       }
 
 
@@ -368,7 +370,7 @@ const Challenges = [
               style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
 
               source={item.uri} />
-
+            
 
 
           </Animated.View>

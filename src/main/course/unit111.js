@@ -16,8 +16,16 @@ import {
 
 import ListItem from './ListItem'
 
-// const Item_width = Dimensions.get('window').width
+
+
+
+const Item_width = Dimensions.get('window').width
+
+
+
 export default class unit111 extends Component{
+
+
 
 
     render(){
@@ -32,7 +40,12 @@ export default class unit111 extends Component{
             <FlatList
             numColumns={4}
             data={columns}
-            renderItem = { ({item})  => <Image>{item.uri}</Image>}
+            renderItem = { ({item})  =>{ 
+            return <ListItem itemWidth={(Item_width-10*4)/4} image={item.uri}/>
+        } }
+        keyExtractor={
+            (index)=>{ return index }
+        }
              
             />
           

@@ -1,55 +1,96 @@
 import React, { Component } from "react";
-import {Button, Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, AsyncStorage} from 'react-native';
+import {Button, Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, AsyncStorage, FlatList, Dimensions,ScrollView,TouchableHighlight } from 'react-native';
 import Unit1C from './unit1';
 import Unit2C from './unit2';
+import styles from "./style.js";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, Header } from 'react-navigation-stack';
 
+const data = [
+  { key: 'Unit 3' }, { key: 'Unit 4' }, { key: 'Unit 5' },
+   { key: 'Unit 6' }, { key: 'Unit 7' }, { key: 'Unit 8' },
+    { key: 'Unit 9' }, { key: 'Unit 10' }, { key: 'Unit 11' }, { key: 'Unit 12' },{ key: 'Unit 13' }, { key: 'Unit 14' }, 
+
+];
+
+const formatData = (data, numColumns) => {
+  const numberOfFullRows = Math.floor(data.length / numColumns);
+
+  let numberOfElementsLastRow = data.length - (numberOfFullRows * numColumns);
+  while (numberOfElementsLastRow !== numColumns && numberOfElementsLastRow !== 0) {
+    data.push({ key: `blank-${numberOfElementsLastRow}`, empty: true });
+    numberOfElementsLastRow++;
+  }
+
+  return data;
+};
+const numColumns = 2;
   
 class CourseScreen extends Component {
 
-  constructor(props){
-    super(props);
-    this.state=
-    {
-      test:'',
-    }
-  }
-
-
-  render() {
-    return (
-
-        
-
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-         
-            <Button
-             
-              onPress={() => this.unit1()}
-              title="Unit1"
-              color="#793FA0"
-            />
-       
-            <Button
-          
-              onPress={() => this.unit2()}
-              title="Unit2"
-              color="#793FA0"
-            />
-          </View>
-  
-    );
-  }
-
-  unit1() {
+  _unit1() {
     this.props.navigation.navigate('Unit1')
   }
   
 
-   unit2() {
+  _unit2() {
     this.props.navigation.navigate('Unit2')
   }
+
+  renderItem = ({ item, index }) => {
+    if (item.empty === true) {
+      return <View style={[styles.item, styles.itemInvisible]} />
+      ;
+    }
+    return (
+
+   
+      
+      <View
+        style={styles.item}
+      >
+
+        <Text style={styles.itemText}>{item.key}</Text>
+      </View>
+
+
+    );
+  };
+
+  render() {
+    return (
+      // <View>
+
+      // <Button onPress={this.unit1()} title="hello"/>
+      // </View>
+      <ScrollView>
+      <View style={styles.container} >
+      <View style={{flex: 1, flexDirection: 'row'}}>
+      <View style={styles.buttonContainer}>
+      <TouchableHighlight onPress={() => this._unit1()} underlayColor='#f1c40f'>
+    <Text style={styles.itemText}>Unit 1</Text>
+</TouchableHighlight>
+  </View>
+  <View style={styles.buttonContainer}>
+      <TouchableHighlight onPress={() => this._unit2()} underlayColor='#f1c40f'>
+      <Text style={styles.itemText}>Unit 2</Text>
+  </TouchableHighlight>
+  </View>
+  </View>
+
+
+      <FlatList
+        data={formatData(data, numColumns)}
+        renderItem={this.renderItem}
+        numColumns={numColumns}
+      />
+      </View>
+      </ScrollView>
+
+    );
+  }
+
+  
 }
 
 const Units = createStackNavigator({
@@ -58,6 +99,7 @@ const Units = createStackNavigator({
   Unit2: {screen: Unit2C},
 },{headerMode: 'none',
 });
+
 
 export default createAppContainer(Units);
 

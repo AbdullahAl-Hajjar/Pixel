@@ -5,6 +5,10 @@ import LoginScreen from './src/login/login.js';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, Header } from 'react-navigation-stack';
 import firebase from 'firebase';
+import { YellowBox } from 'react-native';
+
+console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
+YellowBox.ignoreWarnings(['Setting a timer']);
 
  class App extends React.Component {
   

@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import styles from "./style.js";
-import {Button, Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, AsyncStorage} from 'react-native';
+import {Image, Button, Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert, KeyboardAvoidingView, AsyncStorage} from 'react-native';
 import firebase from 'firebase';
 import Main from '../main/main.js';
 import CreateAccount from './createAccount.js';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, Header } from 'react-navigation-stack';
+
 
 function Separator() {
     return <View style={styles.separator} />;
@@ -55,7 +56,11 @@ class LoginScreen extends Component {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={styles.loginScreenContainer}>
           <View style={styles.loginFormView}>
-          <Text style={styles.logoText}>Spark Your Path</Text>
+          <Image
+          style={styles.logo }
+          source={require("../../assets/Logo_En_Black_200x55.png")}
+       
+        />
             <TextInput placeholder="Username" value={this.state.username}
             onChangeText={username => this.setState({username})}
             placeholderColor="#c4c3cb" style={styles.loginFormTextInput} />

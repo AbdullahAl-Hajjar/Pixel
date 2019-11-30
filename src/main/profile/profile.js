@@ -10,6 +10,7 @@ import {
 import Icon from "react-native-vector-icons/FontAwesome";
 import styles from "./style.js";
 
+
 class ProfileScreen extends React.Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
     return {

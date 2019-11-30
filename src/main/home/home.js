@@ -10,15 +10,13 @@ import Icon from "react-native-vector-icons/FontAwesome";
 //import * as Animatable from 'react-native-animatable'
 // import styles from "./style.js";
 
+
 class HomeScreen extends React.Component {
   
     render() {
       return (
         <View style={styles.container}>
-          <Image
-              style={styles.logoImage}
-              source={require("../../../assets/logo.png")}
-            />
+
            
           <Text style={styles.welcome}>
             

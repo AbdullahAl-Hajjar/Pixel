@@ -24,6 +24,14 @@ logoText: {
   marginBottom: 30,
   textAlign: 'center',
 },
+logo: {
+  width: 200, height: 200,
+  resizeMode: 'contain',
+  marginTop: 50,
+  marginBottom: 10,
+  marginHorizontal:100,
+
+},
 loginFormView: {
   flex: 1
 },

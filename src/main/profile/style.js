@@ -28,7 +28,9 @@ export default {
 
   secondrow: {
     flex: 2,
-    flexDirection: "column"
+    flexDirection: "column",
+    margin:5
+   
   },
 
   thirdrow: {
@@ -49,16 +51,16 @@ export default {
     height: 140,
     margin: 10,
     borderRadius: 10,
-    borderColor: "green",
-    borderWidth: 1
+    borderColor: "purple",
+    borderWidth: 1.5
   },
   company: {
     width: 100,
     height: 140,
     margin: 10,
     borderRadius: 10,
-    borderColor: "red",
-    borderWidth: 1
+    borderColor: "purple",
+    borderWidth: 1.5
   },
   titleText: {
     margin: 10

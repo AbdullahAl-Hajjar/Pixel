@@ -8,6 +8,7 @@ import CourseScreen from "./course/course";
 import ProfileScreen from "./profile/profile";
 import SearchScreen from "./search/search";
 
+
 // const ProfileStack = createStackNavigator({ ProfileScreen });
 
 const MainTabs = createBottomTabNavigator(
