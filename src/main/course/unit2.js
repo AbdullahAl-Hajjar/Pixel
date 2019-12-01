@@ -5,15 +5,15 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 
 
-class CourseScreen extends React.Component {
+class unit2 extends React.Component {
 
-    constructor()
+    constructor(props)
     {
-      super()
+      super(props)
       this.state={
 
           
-
+        count: 0,
         CName1 : "Startup Health",
         CName2 : "Welbi",
         CName3 : "CDC",
@@ -270,6 +270,7 @@ class CourseScreen extends React.Component {
       // o.name = (o.name === 'haert')? 'heart-o':'heart';
       // id.name = 'heart';
       var internal_data = this.state.companies;
+      this.state.count+=1;
       internal_data.forEach(c => {
         c.data.forEach(cc => {
             if(cc.id == id.id){
@@ -277,6 +278,12 @@ class CourseScreen extends React.Component {
               cc.name = '11';
              // store to firebase
              console.log(cc);
+              
+              console.log('COUNTER: '+this.state.count);
+              if(this.state.count === 3)
+              {
+                alert('Great! Now Navigate to the Profile');
+              }
             } 
         });
       });
@@ -319,6 +326,7 @@ class CourseScreen extends React.Component {
     }
 
     render() {
+ 
       console.log('render called');
       // (this.state.selectHeart)? alert('hi'):null;
       return (
@@ -339,5 +347,5 @@ class CourseScreen extends React.Component {
 
 
   
-  export default CourseScreen;
+  export default unit2;
   

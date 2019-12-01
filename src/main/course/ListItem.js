@@ -9,14 +9,25 @@ import {
 
 } from 'react-native';
 
+
 var imageArray = [];
 var clicked = 0;
 
 export default class ListItem extends Component {
-    state = {
+ 
+    constructor(props)
+    {
+      super(props)
+
+    this.state = {
         animatePress: new Animated.Value(1)
+        
+
+   
+    }
 
     }
+
     animate() {
         Animated.timing(this.state.animatePress, {
             toValue: 0.6,
@@ -25,9 +36,9 @@ export default class ListItem extends Component {
         }).start()
         console.log("IMAGES CLICKED"+this.props.image)
         imageArray.push(this.props.image)
-        cliccked+=1;
+        clicked+=1;
         if(clicked === 3){
-            this.props.navigation.navigate('profile',{ data:imageArray })
+            alert('Great! Now naviagate back and complete Unit 2 ')
         }
     }
     render() {
@@ -53,4 +64,5 @@ export default class ListItem extends Component {
         )
     }
 }
+
 

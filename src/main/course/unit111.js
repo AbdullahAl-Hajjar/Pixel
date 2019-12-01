@@ -13,15 +13,11 @@ import {
     Dimensions,
 
 } from 'react-native';
-
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator, Header } from 'react-navigation-stack';
 import ListItem from './ListItem'
 
-
-
-
 const Item_width = Dimensions.get('window').width
-
-
 
 export default class unit111 extends Component{
 
@@ -61,3 +57,5 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
     },
 });
+
+

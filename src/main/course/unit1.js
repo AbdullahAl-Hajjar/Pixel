@@ -37,31 +37,31 @@ const Challenges = [
 
   { id: "5", uri: require('../../../assets/challenge-cards/5.png') },
 
-  { id: "6", uri: require('../../../assets/challenge-cards/6.png') },
+  // { id: "6", uri: require('../../../assets/challenge-cards/6.png') },
 
-  { id: "7", uri: require('../../../assets/challenge-cards/7.png') },
+  // { id: "7", uri: require('../../../assets/challenge-cards/7.png') },
 
-  { id: "8", uri: require('../../../assets/challenge-cards/8.png') },
+  // { id: "8", uri: require('../../../assets/challenge-cards/8.png') },
 
-  { id: "9", uri: require('../../../assets/challenge-cards/9.png') },
+  // { id: "9", uri: require('../../../assets/challenge-cards/9.png') },
 
-  { id: "10", uri: require('../../../assets/challenge-cards/10.png') },
+  // { id: "10", uri: require('../../../assets/challenge-cards/10.png') },
 
-  { id: "11", uri: require('../../../assets/challenge-cards/11.png') },
+  // { id: "11", uri: require('../../../assets/challenge-cards/11.png') },
 
-  { id: "12", uri: require('../../../assets/challenge-cards/12.png') },
+  // { id: "12", uri: require('../../../assets/challenge-cards/12.png') },
 
-  { id: "13", uri: require('../../../assets/challenge-cards/13.png') },
+  // { id: "13", uri: require('../../../assets/challenge-cards/13.png') },
 
-  { id: "14", uri: require('../../../assets/challenge-cards/14.png') },
+  // { id: "14", uri: require('../../../assets/challenge-cards/14.png') },
 
-  { id: "15", uri: require('../../../assets/challenge-cards/15.png') },
+  // { id: "15", uri: require('../../../assets/challenge-cards/15.png') },
 
-  { id: "16", uri: require('../../../assets/challenge-cards/16.png') },
+  // { id: "16", uri: require('../../../assets/challenge-cards/16.png') },
 
-  { id: "17", uri: require('../../../assets/challenge-cards/17.png') },
+  // { id: "17", uri: require('../../../assets/challenge-cards/17.png') },
 
-  { id: "18", uri: require('../../../assets/challenge-cards/18.png') },
+  // { id: "18", uri: require('../../../assets/challenge-cards/18.png') },
 
 ]
 
@@ -267,7 +267,7 @@ const Challenges = [
       if(this.state.currentIndex == Challenges.length)
       {
 
-        this.props.navigation.navigate('unit111',{ data:selectedImage })
+        this.props.navigation.navigate('unit2',{ data:selectedImage })
       }
 
 

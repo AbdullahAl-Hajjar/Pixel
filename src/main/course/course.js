@@ -3,6 +3,7 @@ import {Button, Keyboard, Text, View, TextInput, TouchableWithoutFeedback, Alert
 import Unit1C from './unit1';
 import Unit2C from './unit2';
 import styles from "./style.js";
+import ListItem from './ListItem';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator, Header } from 'react-navigation-stack';
 
@@ -27,6 +28,11 @@ const formatData = (data, numColumns) => {
 const numColumns = 2;
   
 class CourseScreen extends Component {
+
+  constructor(props){
+    super(props);
+
+  }
 
   _unit1() {
     this.props.navigation.navigate('Unit1')
@@ -59,10 +65,6 @@ class CourseScreen extends Component {
 
   render() {
     return (
-      // <View>
-
-      // <Button onPress={this.unit1()} title="hello"/>
-      // </View>
       <ScrollView>
       <View style={styles.container} >
       <View style={{flex: 1, flexDirection: 'row'}}>

@@ -8,7 +8,7 @@ import firebase from 'firebase';
 import { YellowBox } from 'react-native';
 
 console.ignoredYellowBox = ['Warning: Each', 'Warning: Failed'];
-YellowBox.ignoreWarnings(['Setting a timer']);
+YellowBox.ignoreWarnings(['Setting a timer', 'Require cycle', 'Warning']);
 
  class App extends React.Component {
   
