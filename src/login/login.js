@@ -27,7 +27,7 @@ class LoginScreen extends Component {
   componentWillMount()
   {
     var firebaseConfig = {
-      apiKey: "AIzaSyDGFnqFvXWXvR8Sfu3JqrsKBT9Hgb-HOcQ",
+      apiKey: "",
       authDomain: "sparkpath-6b02e.firebaseapp.com",
       databaseURL: "https://sparkpath-6b02e.firebaseio.com",
       projectId: "sparkpath-6b02e",
