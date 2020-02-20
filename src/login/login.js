@@ -89,11 +89,6 @@ class LoginScreen extends Component {
     );
   }
 
-  componentDidMount() {
-  }
-
-  componentWillUnmount() {
-  }
 
   
 
